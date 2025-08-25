@@ -1,0 +1,304 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 2px;
+  margin: 1rem auto;
+}
+
+datalist {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;       /* make it full width */
+  z-index: 1000;     /* always above content */
+  background-color: black;
+  border-bottom: 1px solid white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav .nav-items a {
+  margin: 0 1rem;
+    color: rgba(255, 255, 255, 0.7);
+
+}
+
+nav .nav-items a:hover {
+  color: #fff;
+}
+
+main {
+  display: flex;
+  /* height: 100vh; */
+  margin-top: 60px; 
+}
+
+main aside {
+  flex: 0.2;
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 60px;                /* height of your navbar */
+  bottom: 0;
+  width: 11rem;
+  overflow-y: auto;         /* scroll inside if content is too long */
+  padding: 1rem 0;
+}
+
+
+main main-content {
+  display: block;
+  width: 100%;
+  margin-left: 11rem;
+  padding-top: 1rem;
+}
+
+aside section {
+  padding: 1rem;
+  border-bottom: 1px solid white;
+}
+
+aside section:last-child {
+  border-bottom: none;
+}
+
+aside section title {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+aside section li {
+  margin-bottom: 0.75rem;
+}
+
+aside section label {
+  cursor: pointer;
+  margin-left: 0.25rem;
+}
+
+main-content {
+  padding: 1rem;
+  position: relative;
+}
+
+main-content input {
+  padding: 1rem;
+  width: 100%;
+  position: relative;
+  font-size: 1rem;
+}
+
+main-content .filters {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+main-content .filter {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+main-content .active {
+  background-color: black;
+  color: white;
+}
+
+main-content section {
+  margin-top: 1.2rem;
+}
+
+main-content section title {
+  display: block;
+  font-size: 1.5rem;
+}
+
+
+
+
+
+main-content .items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 items in a row */
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+main-content .items .item {
+  border: 1px solid black;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main-content .items .item img {
+  width: 100%;
+  height: 220px;   /* same height */
+  object-fit: contain; /* keep aspect ratio */
+  padding: 10px;
+  background-color:beige;
+}
+
+
+
+
+
+main-content .items .item .row {
+  display: flex;
+  justify-content: space-between;
+}
+
+main-content .items .item .info {
+  padding: 1rem;
+}
+
+main-content .items .item button {
+  width: 100%;
+  border-radius: none;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+main-content .items .item .colors {
+  display: flex;
+  margin: 1rem 0;
+}
+
+main-content .items .item .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin: 0 5px;
+}
+
+
+
+@media (max-width: 1024px) {
+  main-content .items {
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  main-content .items {
+    grid-template-columns: 1fr; /* 1 per row */
+  }
+}
+
+
+
+
+/* Filter button (only mobile) */
+.filter-toggle {
+  display: none;
+  background: white;
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+/* Mobile sidebar overlay */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 15px;
+    height: auto;       /* ✅ Allow navbar to expand if items wrap */
+    padding: 1rem;
+    width: 100vw;
+  }
+  
+
+  .filter-toggle {
+    display: block; /* show filter button */
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  main-content .filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  main-content .filter {
+    flex: unset;       /* remove flex so grid controls width */
+    font-size: 0.9rem; /* make text fit better */
+    padding: 0.4rem;   /* smaller padding for mobile */
+  }
+
+  aside {
+    position: fixed;
+    top: 60px; /* below navbar */
+    left: -100%; /* hidden by default */
+    width: 80%;
+    max-width: 300px;
+    height: calc(100% - 60px);
+    background: black;
+    color: white;
+    z-index: 200;
+    overflow-y: auto;
+    transition: left 0.3s ease-in-out;
+  }
+
+  aside.active {
+    left: 0; /* slide in */
+  }
+
+  main-content {
+    margin-left: 0 !important; /* remove sidebar gap */
+    width: 100%;
+    margin-top: 80px;
+  }
+}
+
